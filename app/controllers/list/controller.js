@@ -1,6 +1,6 @@
 'use strict';
 
-var response = require('./res');
+var response = require('../../utils/response');
 var connection = require('../../utils/connection');
 
 exports.get = function(req, res) {

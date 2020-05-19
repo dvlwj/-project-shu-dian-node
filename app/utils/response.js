@@ -1,10 +1,18 @@
 'use strict';
 
 exports.ok = function(values, res) {
-  var data = {
+  var data = null;
+  if(values.length > 1){
+    data = {
       'status': 200,
       'data': values
-  };
+    };
+  } else {
+    data = {
+      'status': 200,
+      'data': values[0]
+    };
+  }
   res.json(data);
   res.end();
 };

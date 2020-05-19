@@ -9,4 +9,6 @@ module.exports = function(app) {
         .get(routeList.get);
     app.route('/list/getDetails')
         .post(routeList.getDetails);
+    app.route('/list/delete')
+        .delete(routeList.delete);
 };

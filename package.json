@@ -1,0 +1,22 @@
+{
+  "name": "shu-dian-node",
+  "version": "1.0.0",
+  "description": "a testing project for using node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvlwj/project-shu-dian-node.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "dvlwj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvlwj/project-shu-dian-node/issues"
+  },
+  "homepage": "https://github.com/dvlwj/project-shu-dian-node#readme"
+}

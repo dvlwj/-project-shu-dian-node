@@ -48,3 +48,12 @@ exports.unauthorized = function unauthorized(res) {
   res.json(data);
   res.end();
 };
+
+exports.badRequest = function badRequest(message, res) {
+  const data = {
+    message,
+  };
+  res.status(400);
+  res.json(data);
+  res.end();
+}

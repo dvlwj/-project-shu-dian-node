@@ -24,6 +24,6 @@ CREATE TABLE IF NOT EXISTS to_do_list (
   created_on DATETIME DEFAULT NOW(),
   updated_by varchar(50),
   updated_on DATE,
-  active BOOLEAN NOT NULL DEFAULT 0,
+  active BOOLEAN NOT NULL DEFAULT 1,
   PRIMARY KEY (id)
 )

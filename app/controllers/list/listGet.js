@@ -21,7 +21,7 @@ exports.get = function get(req, res) {
           response.error(message, res);
         } else if (!error && rows.length === 0) {
           console.log('===== Success queried data from table to_do_list, but no data found');
-          response.empty(message, res);
+          response.empty(res);
         } else {
           const data = rows;
           const dataInJSONString = JSON.stringify(data);

@@ -13,24 +13,34 @@ exports.delete = function deleteData(req, res) {
       },
       [requestPayloadBody.id],
       (error, rows) => {
-        if (error) {
-          console.log(error);
-        } else if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
-          console.log('===== Failed to query delete data in table to_do_list : timeout');
-          res.timeout('===== Failed to delete data. Data processing take so long !');
+        if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
+          const message = 'Failed to get data. Data processing take so long !';
+          console.log('===== Failed to query data from table to_do_list : timeout');
+          response.timeout(message, res);
+        } else if (error) {
+          const message = 'Failed to process your request, some internal error';
+          console.log('===== Failed to process request, some internal error happening : ', error);
+          response.error(message, res);
+        } else if (!error && rows.affectedRows === 0) {
+          const message = 'Failed to process your request, no data affected';
+          console.log('===== Failed to process request, no data affected');
+          response.forbidden(message, res);
         } else {
           const data = rows;
           const dataInJSONString = JSON.stringify(data);
-          console.log("jajajaja",dataInJSONString);
+          const dataInJSONStringMinimified = dataInJSONString.replace(/\n/g, '');
+          const message = 'Success delete data from table to_do_lis';
           console.log('===== Success delete data from table to_do_list');
-          response.ok(rows, res);
+          console.log('===== Queried data from db to return :', dataInJSONStringMinimified);
+          response.ok(rows, message, res);
         }
         console.log('==== Stop process of /list/delete endpoint');
       },
     );
   } catch (error) {
-    console.log(`===== Process of /list/delete endpoint got an issue :${error}`);
-    response.error(error);
+    const message = 'Failed to process your request, some internal error';
+    console.log('===== Process of /list/delete endpoint got an issue : ', error);
+    response.error(message, error);
     console.log('==== Stop process of /list/delete endpoint');
   }
 };

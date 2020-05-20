@@ -19,9 +19,11 @@ USE shu_dian_dev_db;
 CREATE TABLE IF NOT EXISTS to_do_list (
   id int(11) NOT NULL AUTO_INCREMENT,
   subject varchar(50) NOT NULL,
+  status ENUM('todo','done') NOT NULL DEFAULT 'todo',
   created_by varchar(50) NOT NULL,
   created_on DATETIME DEFAULT NOW(),
   updated_by varchar(50),
   updated_on DATE,
+  active BOOLEAN NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 )

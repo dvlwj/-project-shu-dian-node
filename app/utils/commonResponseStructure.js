@@ -1,8 +1,16 @@
 exports.ok = function ok(values, message, res) {
-  const data = {
-    message,
-    data: values.length > 1 ? values : values[0],
-  };
+  let data = null;
+  if (Array.isArray(values)) {
+    data = {
+      message,
+      data: values.length > 1 ? values : values[0],
+    };
+  } else {
+    data = {
+      message,
+      data: values,
+    };
+  }
   res.status(200);
   res.json(data);
   res.end();

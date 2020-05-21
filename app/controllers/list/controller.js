@@ -1,8 +1,8 @@
-const listGet = require('./listGet');
-const listGetDetails = require('./listGetDetails');
-const listDelete = require('./listDelete');
-const listUpdate = require('./listUpdate');
-const listCreate = require('./listCreate');
+const listGet = require('./get');
+const listGetDetails = require('./getDetails');
+const listDelete = require('./delete');
+const listUpdate = require('./update');
+const listCreate = require('./create');
 
 exports.get = listGet.get;
 exports.getDetails = listGetDetails.getDetails;

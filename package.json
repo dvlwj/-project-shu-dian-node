@@ -4,7 +4,7 @@
   "description": "a testing project for using node",
   "main": "server.js",
   "scripts": {
-    "dev": "LOG_LEVEL=debug nodemon server.js | (pino-colada && ./node_modules/.bin/pino-pretty) ",
+    "dev": "LOG_LEVEL=debug NODE_ENV=dev nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,11 +24,14 @@
     "extends": "airbnb"
   },
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-pino-logger": "^5.0.0",
+    "express-winston": "^4.0.3",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

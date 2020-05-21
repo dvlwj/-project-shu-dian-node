@@ -18,15 +18,15 @@ exports.create = function createData(req, res) {
     const message = 'Subject shouldn\'t be empty and must be in string';
     logger.info(`Request is rejected because ${message}`);
     response.badRequest(message, res);
-  } else {
+  } else if (utils.checkIfAuthenticated(req, res)) {
     logger.info('Starting to run the query to create new data in to_do_list table');
     try {
       connection.query(
         {
-          sql: 'INSERT INTO to_do_list (subject, created_by) values (?, "david")',
+          sql: 'INSERT INTO to_do_list (subject, created_by) values (?, ?)',
           timeout: 30000,
         },
-        [requestPayloadBody.subject],
+        [requestPayloadBody.subject, req.session.username],
         (error, rows) => {
           if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
             const message = 'Failed to get data. Data processing take so long !';

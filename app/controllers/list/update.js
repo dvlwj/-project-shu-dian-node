@@ -34,15 +34,15 @@ exports.updateDetails = function updateDetails(req, res) {
     const message = 'Subject shouldn\'t be empty and must be in string';
     logger.info(`Request is rejected because ${message}`);
     response.badRequest(message, res);
-  } else {
+  } else if (utils.checkIfAuthenticated(req, res)) {
     logger.info('Starting to run the query to update details in to_do_list table');
     try {
       connection.query(
         {
-          sql: 'UPDATE to_do_list SET status = ?, subject = ?, updated_on = CURRENT_TIMESTAMP WHERE id = ? AND active',
+          sql: 'UPDATE to_do_list SET status = ?, subject = ?, updated_by = ?, updated_on = CURRENT_TIMESTAMP WHERE id = ? AND active',
           timeout: 30000,
         },
-        [requestPayloadBody.status, requestPayloadBody.subject, requestPayloadBody.id],
+        [requestPayloadBody.status, requestPayloadBody.subject, req.session.username, requestPayloadBody.id],
         (error, rows) => {
           if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
             const message = 'Failed to get data. Data processing take so long !';

@@ -6,8 +6,10 @@ module.exports = function route(app) {
   //   .get(routeGeneral.index);
   app.route('/user/create')
     .post(routeUser.create);
+  app.route('/user/login')
+    .post(routeUser.login);
   app.route('/list')
-    .get(routeList.get);
+    .post(routeList.get);
   app.route('/list/getDetails')
     .post(routeList.getDetails);
   app.route('/list/delete')

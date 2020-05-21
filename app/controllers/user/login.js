@@ -66,7 +66,8 @@ exports.login = async function login(req, res) {
             logger.info(`Success queried data details from table user and UUID generated for username : ${requestPayloadBody.username}`);
             req.session.uniqueID = req.sessionID;
             req.session.authenticated = true;
-            req.session.userInfo.username = requestPayloadBody.username;
+            req.session.username = requestPayloadBody.username;
+            console.log(req.session);
             response.ok(dataToReturn, message, res);
           }
         },

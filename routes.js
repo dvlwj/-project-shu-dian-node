@@ -1,8 +1,11 @@
+const routeUser = require('./app/controllers/user/controller');
+const routeList = require('./app/controllers/list/controller');
+
 module.exports = function route(app) {
-  const routeGeneral = require('./app/controllers/generals/controller');
-  const routeList = require('./app/controllers/list/controller');
-  app.route('/')
-    .get(routeGeneral.index);
+  // app.route('/')
+  //   .get(routeGeneral.index);
+  app.route('/user/create')
+    .post(routeUser.create);
   app.route('/list')
     .get(routeList.get);
   app.route('/list/getDetails')

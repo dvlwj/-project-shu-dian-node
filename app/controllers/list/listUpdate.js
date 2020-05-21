@@ -1,8 +1,6 @@
 const response = require('../../utils/commonResponseStructure');
 const connection = require('../../utils/connection');
 const utils = require('../../utils/utils');
-// const { check, validationResult } = require('express-validator');
-
 
 exports.updateDetails = function updateDetails(req, res) {
   const requestPayloadBody = req.body;
@@ -13,14 +11,14 @@ exports.updateDetails = function updateDetails(req, res) {
     console.log(`Request is rejected because ${message}`);
     response.badRequest(message, res);
   } else if (
-    utils.checkIfPropertyEmpty(requestPayloadBody.id) ||
-    !Number.isInteger(requestPayloadBody.id)
+    utils.checkIfPropertyEmpty(requestPayloadBody.id)
+    || !Number.isInteger(requestPayloadBody.id)
   ) {
     const message = 'Id is mandatory and must be in Integer';
     console.log(`Request is rejected because ${message}`);
     response.badRequest(message, res);
-  } else if (utils.checkIfPropertyEmpty(requestPayloadBody.status) ||
-    typeof requestPayloadBody.status !== 'string') {
+  } else if (utils.checkIfPropertyEmpty(requestPayloadBody.status)
+  || typeof requestPayloadBody.status !== 'string') {
     const message = 'Status can\'t be empty and must be in string';
     console.log(`Request is rejected because ${message}`);
     response.badRequest(message, res);
@@ -29,8 +27,8 @@ exports.updateDetails = function updateDetails(req, res) {
     console.log(`Request is rejected because ${message}`);
     response.badRequest(message, res);
   } else if (
-    utils.checkIfPropertyEmpty(requestPayloadBody.subject) ||
-    typeof requestPayloadBody.subject !== 'string'
+    utils.checkIfPropertyEmpty(requestPayloadBody.subject)
+    || typeof requestPayloadBody.subject !== 'string'
   ) {
     const message = 'Subject shouldn\'t be empty and must be in string';
     console.log(`Request is rejected because ${message}`);

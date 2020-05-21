@@ -8,7 +8,7 @@ exports.create = async function createData(req, res) {
   const requestPayloadBody = req.body;
   const requestPayloadBodyInString = JSON.stringify(requestPayloadBody);
   const { password } = requestPayloadBody;
-  logger.info(`Start process of /user/create endpoint with request payload : ${requestPayloadBodyInString}`);
+  logger.info('Start process of /user/create endpoint with request payload');
   if (utils.checkIfObjectEmpty(requestPayloadBody)) {
     const message = 'Request payload can\'t be empty';
     logger.info(`Request is rejected because ${message}`);
@@ -66,9 +66,9 @@ exports.create = async function createData(req, res) {
       );
     } catch (error) {
       const message = 'Failed to process your request, some internal error';
-      logger.info(`Process of /list/create endpoint got an issue : ${error}`);
+      logger.info(`Process of /user/create endpoint got an issue : ${error}`);
       response.error(message, error);
     }
   }
-  logger.info('Stop process of /list/create endpoint');
+  logger.info('Stop process of /user/create endpoint');
 };

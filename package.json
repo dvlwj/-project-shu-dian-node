@@ -4,7 +4,7 @@
   "description": "a testing project for using node",
   "main": "server.js",
   "scripts": {
-    "dev": "LOG_LEVEL=debug nodemon server.js | ./node_modules/.bin/pino-pretty",
+    "dev": "LOG_LEVEL=debug nodemon server.js | (pino-colada && ./node_modules/.bin/pino-pretty) ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,9 +28,7 @@
     "express": "^4.17.1",
     "express-pino-logger": "^5.0.0",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.4",
-    "pino": "^6.2.1",
-    "pino-colada": "^1.6.1"
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -38,7 +36,6 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^2.5.0",
-    "pino-pretty": "^4.0.0"
+    "eslint-plugin-react-hooks": "^2.5.0"
   }
 }

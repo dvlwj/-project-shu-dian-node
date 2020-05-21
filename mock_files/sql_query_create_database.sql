@@ -27,3 +27,14 @@ CREATE TABLE IF NOT EXISTS to_do_list (
   active BOOLEAN NOT NULL DEFAULT 1,
   PRIMARY KEY (id)
 )
+CREATE TABLE IF NOT EXISTS users (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(50) UNIQUE NOT NULL,
+  password varchar(255) NOT NULL,
+  created_by varchar(50) NOT NULL,
+  created_on DATETIME DEFAULT NOW(),
+  updated_by varchar(50),
+  updated_on DATETIME,
+  active BOOLEAN NOT NULL DEFAULT 1,
+  PRIMARY KEY (id)
+)

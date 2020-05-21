@@ -67,12 +67,12 @@ exports.updateDetails = function updateDetails(req, res) {
             console.log('===== Queried data from db to return :', dataInJSONStringMinimified);
             response.ok(rows, message, res);
           }
-          console.log('==== Stop process of /list/getDetails endpoint');
+          console.log('==== Stop process of /list/updateDetails endpoint');
         },
       );
     } catch (error) {
       const message = 'Failed to process your request, some internal error';
-      console.log('===== Process of /list/getDetails endpoint got an issue :', error);
+      console.log('===== Process of /list/updateDetails endpoint got an issue :', error);
       response.error(message, error);
     }
   }

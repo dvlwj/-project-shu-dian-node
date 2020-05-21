@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS to_do_list (
   created_by varchar(50) NOT NULL,
   created_on DATETIME DEFAULT NOW(),
   updated_by varchar(50),
-  updated_on DATE,
+  updated_on DATETIME,
   active BOOLEAN NOT NULL DEFAULT 1,
   PRIMARY KEY (id)
 )

@@ -67,7 +67,6 @@ exports.login = async function login(req, res) {
             req.session.uniqueID = req.sessionID;
             req.session.authenticated = true;
             req.session.username = requestPayloadBody.username;
-            console.log(req.session);
             response.ok(dataToReturn, message, res);
           }
         },

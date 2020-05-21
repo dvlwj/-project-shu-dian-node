@@ -11,4 +11,6 @@ module.exports = function route(app) {
     .delete(routeList.delete);
   app.route('/list/update')
     .put(routeList.update);
+  app.route('/list/create')
+    .post(routeList.create);
 };

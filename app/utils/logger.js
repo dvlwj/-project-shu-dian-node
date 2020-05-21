@@ -42,7 +42,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 logger.stream = {
-  write(message, encoding) {
+  write(message) {
     logger.info(message);
   },
 };

@@ -57,6 +57,7 @@ exports.login = async function login(req, res) {
               const message = 'Failed to process login request, credentials isn\'t valid';
               logger.info(message);
               response.error(message, res);
+              return;
             }
             const dataToReturn = {
               UUID: req.sessionID,

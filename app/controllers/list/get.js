@@ -43,5 +43,7 @@ exports.get = function get(req, res) {
       response.error(message, error);
       logger.info('Stop process of /list endpoint');
     }
+  } else {
+    response.unauthorized(res);
   }
 };

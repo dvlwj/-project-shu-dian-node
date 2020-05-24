@@ -10,9 +10,10 @@ exports.get = function get(req, res) {
     try {
       connection.query(
         {
-          sql: 'SELECT id, subject FROM to_do_list WHERE active',
+          sql: 'SELECT id, subject FROM to_do_list WHERE active and created_by = ?',
           timeout: 30000,
         },
+        [req.session.username],
         (error, rows) => {
           if (error && error.code === 'PROTOCOL_SEQUENCE_TIMEOUT') {
             const message = 'Failed to get data. Data processing take so long !';

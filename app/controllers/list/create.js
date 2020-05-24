@@ -60,6 +60,8 @@ exports.create = function createData(req, res) {
       logger.info(`Process of /list/create endpoint got an issue : ${error}`);
       response.error(message, error);
     }
+  } else {
+    response.unauthorized(res);
   }
   logger.info('Stop process of /list/create endpoint');
 };

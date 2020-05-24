@@ -45,5 +45,7 @@ exports.getDetails = function getDetails(req, res) {
       response.error(message, error);
       logger.info('Stop process of /list/getDetails endpoint');
     }
+  } else {
+    response.unauthorized(res);
   }
 };

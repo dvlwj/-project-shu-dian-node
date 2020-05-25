@@ -81,6 +81,8 @@ exports.updateDetails = function updateDetails(req, res) {
       logger.info(`Process of /list/updateDetails endpoint got an issue : ${error}`);
       response.error(message, error);
     }
+  } else {
+    response.unauthorized(res);
   }
   logger.info('Stop process of /list/updateDetails endpoint');
 };

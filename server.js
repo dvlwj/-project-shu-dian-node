@@ -11,6 +11,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 const uniqueID = uuid.v4();
 
+const server = app.listen(3001, () => {
+  logger.info(`Websocket server started. Shu Dian Websocket is live on: ${server.address().port}`);
+});
+// eslint-disable-next-line import/order
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  socket.on('SEND_MESSAGE', (data) => {
+    io.emit('MESSAGE', data);
+  });
+  logger.info(`Websocket server : ${socket.id}`);
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public', {
@@ -41,8 +54,8 @@ app.use(
     origin(origin, callback) {
       // allow requests with no origin
       // (like mobile apps or curl requests)
-      if(!origin) return callback(null, true);
-      if(allowedOrigins.indexOf(origin) === -1) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
         const msg = 'The CORS policy for this site does not '
         + 'allow access from the specified Origin.';
         return callback(new Error(msg), false);
@@ -51,18 +64,7 @@ app.use(
     },
   }),
 );
-// app.use((req, res, next) => {
-//   // res.header('Access-Control-Allow-Origin', '*');
-//   // const allowedOrigins = ['http://localhost:8081', 'http://localhost:8080', 'http://localhost:3000'];
-//   // const { origin } = req.headers;
-//   // if (allowedOrigins.indexOf(origin) > -1) {
-//   //   res.setHeader('Access-Control-Allow-Origin', origin);
-//   // }
-//   // res.header('Access-Control-Allow-Origin', 'http://localhost:8081');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization', 'Origin, X-Requested-With, Content-Type, Accept');
-//   res.header('Access-Control-Allow-Credentials', true);
-//   next();
-// });
+
 app.use(session({
   genid: () => uniqueID,
   store: new FileStore(),
